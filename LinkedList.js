@@ -126,13 +126,3 @@ const LinkedList = (head = null) => {
     }
 }
 
-const testList = LinkedList();
-testList.insertAt(0, 0);
-testList.insertAt(1, 1);
-testList.insertAt(2, 2);
-testList.insertAt(1.5, 2);
-testList.insertAt(4, 4);
-testList.insertAt(0.1, 0);
-testList.insertAt(2, 3);
-
-console.log(testList.toString());
