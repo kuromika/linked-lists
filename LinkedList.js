@@ -1,26 +1,26 @@
 import Node from "./Node.js";
 
 
-const LinkedList = () => {
-    let head = null;
+const LinkedList = (head = null) => {
 
     const getHead = () => head;
 
-    const appendValue = (value) => {
+    const append = (value) => {
         if (head === null) {
             head = Node(value);
         } else {
-            _appendValue(head, value);
+            _append(head, value);
         }
     }
 
-    const _appendValue = (current, value) => {
+    const _append = (current, value) => {
         if (current.getNext() === null) {
             current.setNext(Node(value));
         } else {
-            _appendValue(current.getNext(), value);
+            _append(current.getNext(), value);
         }
     }
+
 
     const toString = () => {
         let current = head;
@@ -32,10 +32,10 @@ const LinkedList = () => {
         return string;
     }
 
-    return {getHead, appendValue, toString}
+    return {getHead, append, toString}
 }
 
 const testList = LinkedList();
-testList.appendValue(2);
-testList.appendValue(3);
+testList.append(2);
+testList.append(3);
 console.log(testList.toString());
