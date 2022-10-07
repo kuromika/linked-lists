@@ -36,7 +36,7 @@ const LinkedList = (head = null) => {
         if (current === null) {
             return size;
         } else {
-            return this.size(current.getNext(), size += 1);
+            return size(current.getNext(), size += 1);
         }
     }
 
@@ -47,7 +47,7 @@ const LinkedList = (head = null) => {
         if (current.getNext() === null) {
             return current;
         } else {
-            return this.tail(current.getNext());
+            return tail(current.getNext());
         }
     }
 
@@ -57,7 +57,7 @@ const LinkedList = (head = null) => {
         } else if (current === null) {
             return current;
         }
-        return this.at(--index, current.getNext());
+        return at(--index, current.getNext());
     }
 
     function pop(current = head) {
@@ -70,7 +70,7 @@ const LinkedList = (head = null) => {
             current.setNext(null);
             return;
         }
-        return this.pop(current.getNext());
+        return pop(current.getNext());
     }
 
     function contains(value, current = head) {
@@ -100,3 +100,5 @@ const LinkedList = (head = null) => {
 }
 
 const testList = LinkedList();
+
+testList.size();
