@@ -3,6 +3,7 @@ import Node from "./Node.js";
 
 const LinkedList = (head = null) => {
 
+
     const getHead = () => head;
 
     const append = (value) => {
@@ -39,23 +40,38 @@ const LinkedList = (head = null) => {
         }
     }
 
+    function tail(current = head) {
+        if (head === null) {
+            return head;
+        }
+        if (current.getNext() === null) {
+            return current;
+        } else {
+            return this.tail(current.getNext());
+        }
+
+    }
+
 
     const toString = () => {
         let current = head;
         let string = '';
         while (current !== null) {
-            string += `( ${current.getValue()} ) -> ${!current.getNext() ? 'null' : ''}`
+            string += `( ${current.getValue()} ) -> `
             current = current.getNext();
+        }
+        if (current === null) {
+            string += ' null ';
         }
         return string;
     }
 
-    return {getHead, append, toString, size, prepend}
+    return {getHead, append, toString, size, prepend,tail}
 }
 
 const testList = LinkedList();
+
 testList.append(2);
-testList.append(3);
 testList.prepend(1);
+testList.append(3);
 console.log(testList.toString());
-console.log(testList.size());
