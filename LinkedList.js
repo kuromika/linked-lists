@@ -60,6 +60,20 @@ const LinkedList = (head = null) => {
         return this.at(--index, current.getNext());
     }
 
+    function pop(current = head) {
+        if (head === null) { // linked list is empty
+            return;
+        } else if (head.getNext() === null) { // head === tail
+            head = null;
+            return;
+        } else if (current.getNext().getNext() === null) { // head !== tail
+            current.setNext(null);
+            return;
+        }
+        return this.pop(current.getNext());
+       
+    }
+
 
     const toString = () => {
         let current = head;
@@ -74,13 +88,7 @@ const LinkedList = (head = null) => {
         return string;
     }
 
-    return {getHead, append, toString, size, prepend,tail, at}
+    return {getHead, append, toString, size, prepend,tail, at, pop}
 }
 
 const testList = LinkedList();
-
-testList.append(2);
-testList.prepend(1);
-testList.append(3);
-console.log(testList.toString());
-console.log(testList.at(2).getValue());
