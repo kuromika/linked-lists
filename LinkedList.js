@@ -21,6 +21,24 @@ const LinkedList = (head = null) => {
         }
     }
 
+    const prepend = (value) => {
+        if (head === null) {
+            head = Node(value);
+        } else {
+            const newHead = Node(value);
+            newHead.setNext(head);
+            head = newHead;
+        }
+    }
+
+    function size(current = head, size = 0){
+        if (current === null) {
+            return size;
+        } else {
+            return this.size(current.getNext(), size += 1);
+        }
+    }
+
 
     const toString = () => {
         let current = head;
@@ -32,10 +50,12 @@ const LinkedList = (head = null) => {
         return string;
     }
 
-    return {getHead, append, toString}
+    return {getHead, append, toString, size, prepend}
 }
 
 const testList = LinkedList();
 testList.append(2);
 testList.append(3);
+testList.prepend(1);
 console.log(testList.toString());
+console.log(testList.size());
