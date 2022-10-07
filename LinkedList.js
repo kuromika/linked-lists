@@ -71,7 +71,15 @@ const LinkedList = (head = null) => {
             return;
         }
         return this.pop(current.getNext());
-       
+    }
+
+    function contains(value, current = head) {
+        if (current === null) {
+            return false;
+        } else if (current.getValue() === value) {
+            return true;
+        }
+        return contains(value, current.getNext());
     }
 
 
@@ -88,7 +96,7 @@ const LinkedList = (head = null) => {
         return string;
     }
 
-    return {getHead, append, toString, size, prepend,tail, at, pop}
+    return {getHead, append, toString, size, prepend,tail, at, pop, contains}
 }
 
 const testList = LinkedList();
