@@ -82,6 +82,15 @@ const LinkedList = (head = null) => {
         return contains(value, current.getNext());
     }
 
+    function find(value, index = 0,  current = head) {
+        if (current === null) {
+            return null;
+        } else if (current.getValue() === value) {
+            return index;
+        }
+        return find(value, index += 1, current.getNext());
+    }
+
 
     const toString = () => {
         let current = head;
@@ -96,9 +105,11 @@ const LinkedList = (head = null) => {
         return string;
     }
 
-    return {getHead, append, toString, size, prepend,tail, at, pop, contains}
+    return {
+        getHead, append, toString,
+        size, prepend, tail, at, pop, contains,
+        find
+    }
 }
 
 const testList = LinkedList();
-
-testList.size();
