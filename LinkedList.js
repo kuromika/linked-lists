@@ -49,7 +49,15 @@ const LinkedList = (head = null) => {
         } else {
             return this.tail(current.getNext());
         }
+    }
 
+    function at(index, current = head) {
+        if (index === 0) {
+            return current;
+        } else if (current === null) {
+            return current;
+        }
+        return this.at(--index, current.getNext());
     }
 
 
@@ -66,7 +74,7 @@ const LinkedList = (head = null) => {
         return string;
     }
 
-    return {getHead, append, toString, size, prepend,tail}
+    return {getHead, append, toString, size, prepend,tail, at}
 }
 
 const testList = LinkedList();
@@ -75,3 +83,4 @@ testList.append(2);
 testList.prepend(1);
 testList.append(3);
 console.log(testList.toString());
+console.log(testList.at(2).getValue());
