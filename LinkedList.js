@@ -91,6 +91,20 @@ const LinkedList = (head = null) => {
         return find(value, index += 1, current.getNext());
     }
 
+    function insertAt(value, index, current = head) {
+        if (index === 0) { //the initial index is the head
+            prepend(value);
+            return;
+        }
+        if (index === 1) { //the index is one element behind the desired position
+            const newNode = Node(value);
+            newNode.setNext(current.getNext());
+            current.setNext(newNode);
+            return;
+        }
+        return insertAt(value, index -= 1, current.getNext());
+    }
+
 
     const toString = () => {
         let current = head;
@@ -108,8 +122,17 @@ const LinkedList = (head = null) => {
     return {
         getHead, append, toString,
         size, prepend, tail, at, pop, contains,
-        find
+        find, insertAt
     }
 }
 
 const testList = LinkedList();
+testList.insertAt(0, 0);
+testList.insertAt(1, 1);
+testList.insertAt(2, 2);
+testList.insertAt(1.5, 2);
+testList.insertAt(4, 4);
+testList.insertAt(0.1, 0);
+testList.insertAt(2, 3);
+
+console.log(testList.toString());
